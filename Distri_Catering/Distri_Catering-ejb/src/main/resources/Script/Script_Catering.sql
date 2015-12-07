@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      ORACLE Version 10g                           */
-/* Created on:     7/12/2015 1:24:33                            */
+/* Created on:     7/12/2015 13:08:19                           */
 /*==============================================================*/
 
 
@@ -89,7 +89,7 @@ create table ALIMENTACION  (
 /*==============================================================*/
 create table CLIENTE  (
    CLI_IDENTIFICACION   VARCHAR2(20)                    not null,
-   NOMBRE               VARCHAR2(50),
+   NOMBRE               VARCHAR2(50)                    not null,
    APELLIDO             VARCHAR2(50)                    not null,
    CLI_TELEFONO1        VARCHAR2(15)                    not null,
    CORREO               VARCHAR2(50)                    not null,
@@ -112,12 +112,11 @@ create table DETALLE_ALIMENTACION  (
 /* Table: DETALLE_FACTURA                                       */
 /*==============================================================*/
 create table DETALLE_FACTURA  (
-   COD_DETALLE          INTEGER                         not null,
    COD_FACTURA          INTEGER                         not null,
    COD_PAQUETE          INTEGER                         not null,
    PRECIO               NUMBER(12,2)                    not null,
    TOTAL                NUMBER(12,2)                    not null,
-   constraint PK_DETALLE_FACTURA primary key (COD_DETALLE, COD_FACTURA, COD_PAQUETE)
+   constraint PK_DETALLE_FACTURA primary key (COD_FACTURA, COD_PAQUETE)
 );
 
 /*==============================================================*/
@@ -135,11 +134,11 @@ create table DETALLE_MOBILIARIO  (
 /* Table: DETALLE_SERVICIO                                      */
 /*==============================================================*/
 create table DETALLE_SERVICIO  (
+   SERV_COD_SERVICIO    INTEGER                         not null,
    COD_PAQUETE          INTEGER                         not null,
-   COD_SERVICIO         INTEGER                         not null,
    CANTIDAD             INTEGER                         not null,
    VALOR_TOTAL          NUMBER(5,2)                     not null,
-   constraint PK_DETALLE_SERVICIO primary key (COD_PAQUETE, COD_SERVICIO)
+   constraint PK_DETALLE_SERVICIO primary key (SERV_COD_SERVICIO, COD_PAQUETE)
 );
 
 /*==============================================================*/
@@ -194,10 +193,10 @@ create table PAQUETE  (
 /* Table: SERVICIO                                              */
 /*==============================================================*/
 create table SERVICIO  (
-   COD_SERVICIO         INTEGER                         not null,
+   SERV_COD_SERVICIO    INTEGER                         not null,
    TIPO_SERVICIO        VARCHAR2(20),
    VALOR                NUMBER(5,2),
-   constraint PK_SERVICIO primary key (COD_SERVICIO)
+   constraint PK_SERVICIO primary key (SERV_COD_SERVICIO)
 );
 
 /*==============================================================*/
@@ -261,8 +260,8 @@ alter table DETALLE_SERVICIO
       references PAQUETE (COD_PAQUETE);
 
 alter table DETALLE_SERVICIO
-   add constraint FK_DETALLE__PK_SERVIC_SERVICIO foreign key (COD_SERVICIO)
-      references SERVICIO (COD_SERVICIO);
+   add constraint FK_DETALLE__PK_SERVIC_SERVICIO foreign key (SERV_COD_SERVICIO)
+      references SERVICIO (SERV_COD_SERVICIO);
 
 alter table EVENTO
    add constraint FK_EVENTO_PK_EVENTO_PAQUETE foreign key (COD_PAQUETE)
