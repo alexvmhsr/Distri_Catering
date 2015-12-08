@@ -13,8 +13,16 @@
             <mapping class="com.espe.distribuidas.Model.Mobiliario"></mapping>
             <mapping class="com.espe.distribuidas.Model.DetalleMobiliario"></mapping>
             <mapping class="com.espe.distribuidas.Model.Paquete"></mapping>
-            <mapping class="com.espe.distribuidas.Model.Alimenacion"></mapping>
+            <mapping class="com.espe.distribuidas.Model.Alimentacion"></mapping>
             <mapping class="com.espe.distribuidas.Model.DetalleAlimentacion"></mapping>
+            <mapping class="com.espe.distribuidas.Model.Cliente"></mapping>
+            <mapping class="com.espe.distribuidas.Model.DetalleFactura"></mapping>
+            <mapping class="com.espe.distribuidas.Model.Evento"></mapping>
+            <mapping class="com.espe.distribuidas.Model.TipoEvento"></mapping>
+            <mapping class="com.espe.distribuidas.Model.Factura"></mapping>
+            <mapping class="com.espe.distribuidas.Model.Servicio"></mapping>
+            <mapping class="com.espe.distribuidas.Model.DetalleServicio"></mapping>
+            
         </properties>
     </persistence-unit>
 </persistence>
